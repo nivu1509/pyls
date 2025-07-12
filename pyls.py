@@ -44,20 +44,30 @@ def main() -> None:
     args = parser.parse_args()
 
 
-# The "signature" of the procedure below can be written as
-#     str bool bool -> None
-# In this case, we're choosing a **representation** where we represent
-# the directory name to list as a string and the choice of longform and
-# formatted output as two boolean values.
 def pyls(dirname: str, longform: bool, formatted: bool) -> None:
     """
+    DATA REPRESENTATION
+    -------------------
+
+    In this case, we're choosing a **representation** where we represent
+    the directory name to list as a string and the choice of longform and
+    formatted output as two boolean values.
+   
+    SIGNATURE 
+    ---------
+    The "signature" of the procedure below can be written as
+              str bool bool -> None
+
+    PURPOSE
+    -------
+
     TODO: Replace this content with a sentence or two describing what this
     function does.
     - :param dirname: TODO: Description of `dirname` parameter.
     - :param longform: TODO: Description of `longform` parameter.
     - :param formatted: TODO: Description of `formatted` parameter.
 
-    Examples
+    EXAMPLES
     --------
 
     TODO: Below, give a few examples of what you expect the procedure to do when you
