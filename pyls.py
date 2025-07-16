@@ -60,22 +60,46 @@ def pyls(dirname: str, longform: bool, formatted: bool) -> None:
 
     PURPOSE
     -------
+    This function lists the contents of the specified directory. 
+    If `formatted` is True, it appends "/" to directories.
+    If `longform` is True, it includes each file's last modified time and size. 
 
-    TODO: Replace this content with a sentence or two describing what this
-    function does.
-    - :param dirname: TODO: Description of `dirname` parameter.
-    - :param longform: TODO: Description of `longform` parameter.
-    - :param formatted: TODO: Description of `formatted` parameter.
+    - :param dirname: The name of the directory whose contents are to be listed.
+    - :param longform: Whether to show detailed information (timestamp and size) for each file.
+    - :param formatted: Whether to add special markers ("/" for directories, "*" for executables).
+
 
     EXAMPLES
     --------
+    pyls(".", False, False) -> Prints the list of files in the current directory.
 
-    TODO: Below, give a few examples of what you expect the procedure to do when you
-    give various inputs. This can help you think about what to implement.
-    Consider various possible combinations.
+    pyls("folder_name", True, False) ->Prints timestamp and size along with file names from "folder_name".
+
+    pyls(".", False, True) -> Prints file names, with "/" appended to directories.
+
+    pyls(".", True, True) -> Prints detailed info along with file types.
+
     """
     # Replace the "pass" below with your implementation.
-    pass
+
+    entries = os.listdir(dirname) 
+    
+    for entry in entries:
+        out = " "
+        full_path = dirname + "/" + entry
+
+        if formatted:
+            if os.path.isdir(full_path) == True 
+            out += "/"
+
+        if longform:
+            stat = os.stat(full_path)
+            size = stat.st_size
+            out += str(size)
+
+        out += entry
+        
+        print(out)
 
 
 # A python module may be loaded in one of two ways --
@@ -84,6 +108,8 @@ def pyls(dirname: str, longform: bool, formatted: bool) -> None:
 #    only in this mode, you check whether __name__ is "__main__" and run that code.
 # 2. `import myfile`: (within some other python file). In this mode, it is a pure
 #    "module" that exposes functions and values via `myfile.` notation within the
-#    importing python file. In this case, __name__ will be "myfile" and not "__main__".
+#    importing python file. In this case, __name__ will be "myfile" and not "__main__".'
+
 if __name__ == "__main__":
     main()
+
